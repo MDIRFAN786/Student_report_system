@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    Success <p th:text="${username}"></p>
+    Success
 </body>
 </html>

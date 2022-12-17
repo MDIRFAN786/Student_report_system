@@ -12,19 +12,22 @@ import javafx.scene.text.Text;
 
 @Controller
 public class Controller_login{
-    public String admin;
     @GetMapping("/login")
     public String loginPage(){
         return "login";
     }
 
     @PostMapping("/success")
-    public String authAdmin(@ModelAttribute("username") String username, Model model){
+    public String authAdmin(@ModelAttribute("username") String username,@ModelAttribute("password") String password, Model model){
         System.out.println(username);
         String abc = "admin";
-        admin = username;
         
         if(username.equals(abc)){
+            Admin admin = new Admin();
+            admin.setUsername(username);
+            admin.setPassword(password);
+            System.out.println(admin.getUsername());
+            model.addAttribute(admin);
             return "success";
         }
         return "error";
